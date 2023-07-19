@@ -21,12 +21,12 @@ def main():
 
     if uploaded_file is not None and hasattr(uploaded_file, 'name'):
         mimetype = mimetypes.guess_type(uploaded_file.name)[0]
-        if mimetype == 'application/pdf':
-            handler = PDFHandler()
-        elif mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-            handler = DocHandler()
-        elif mimetype == 'text/plain':
-            handler = TextFileHandler()
+    if mimetype == 'application/pdf':
+        handler = PDFHandler()
+    elif mimetype in ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword']:
+        handler = DocHandler()
+    elif mimetype == 'text/plain':
+        handler = TextFileHandler()
         else:
             st.write(f"Unsupported file type: {mimetype}")
             handler = None
