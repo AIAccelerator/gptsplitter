@@ -9,7 +9,7 @@ def split_text(text, chunk_size):
 st.title('ChatGPT Splitter')
 
 uploaded_file = st.file_uploader("Upload file", type=['txt', 'pdf', 'docx', 'doc', 'xml'])
-chunk_size = st.number_input('Enter chunk size', min_value=1, value=1000)
+chunk_size = st.number_input('Enter chunk size', min_value=1, value=4000, step=1000)
 prompt = st.text_input('Enter prompt')
 
 file_content = None
