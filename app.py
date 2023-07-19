@@ -15,12 +15,11 @@ prompt = st.text_area('Enter prompt', 'Act as a document/text loader until you l
 file_content = None
 if uploaded_file is not None:
     file_content = uploaded_file.read().decode()
-elif st.button('Or paste your text'):
+elif st.button('Or paste your text', key='unique_key_2'):
     file_content = st.text_area('Paste your text here')
 
 if file_content is not None:
     chunks = split_text(file_content, chunk_size, prompt)
     for i, chunk in enumerate(chunks):
-        st.write(f'Chunk {i+1}:')
-        st.write(chunk)
-        st.button('Copy text', key='unique_key_1')
+        st.text_area(f'Chunk {i+1}', chunk, key=f'chunk_{i}')
+        st.button('Copy text', key='copy_{i}')
