@@ -1,3 +1,6 @@
+import PyPDF2
+import docx
+
 class FileHandler:
     def read(self, file):
         raise NotImplementedError
