@@ -3,8 +3,8 @@ from tokenizer import Tokenizer
 
 tokenizer = Tokenizer()
 
-def split_text(text, chunk_size):
-    return tokenizer.split_into_chunks(text, chunk_size)
+def split_text(text, chunk_size, prompt):
+    return tokenizer.split_into_chunks(text, chunk_size, prompt)
 
 st.title('ChatGPT Splitter')
 
@@ -19,7 +19,7 @@ elif st.button('Or paste your text'):
     file_content = st.text_area('Paste your text here')
 
 if file_content is not None:
-    chunks = split_text(file_content, chunk_size)
+    chunks = split_text(file_content, chunk_size, prompt)
     for i, chunk in enumerate(chunks):
         st.write(f'Chunk {i+1}:')
         st.write(chunk)
