@@ -23,4 +23,4 @@ if file_content is not None:
     for i, chunk in enumerate(chunks):
         st.write(f'Chunk {i+1}:')
         st.write(chunk)
-        st.button('Copy text', key='unique_key')
+        st.button('Copy text', key='unique_key_1')
