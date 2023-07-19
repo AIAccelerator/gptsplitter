@@ -18,7 +18,7 @@ def main():
     if uploaded_file is not None:
         from file_handler import PDFHandler, DocHandler, TextFileHandler
 
-    if uploaded_file is not None:
+    if uploaded_file is not None and hasattr(uploaded_file, 'name'):
         mimetype = mimetypes.guess_type(uploaded_file.name)[0]
         if mimetype == 'application/pdf':
             handler = PDFHandler()
