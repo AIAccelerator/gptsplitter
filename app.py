@@ -20,7 +20,6 @@ def main():
         from file_handler import PDFHandler, DocHandler, TextFileHandler
 
         if uploaded_file is not None and hasattr(uploaded_file, 'name'):
-            st.write (uploaded_file)
             mimetype = mimetypes.guess_type(uploaded_file.name)[0]
             if mimetype is None:
                 mimetype = uploaded_file.type
