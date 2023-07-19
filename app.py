@@ -27,11 +27,9 @@ def main():
         elif mimetype == 'text/plain':
             handler = TextFileHandler()
         else:
-        pass
-    else:
-        pass
-        st.write(f"Unsupported file type: {mimetype}")
-        handler = None
+            st.write(f"Unsupported file type: {mimetype}")
+            handler = None
+            
     elif uploaded_file is None:
         handler = None
 
@@ -46,7 +44,6 @@ def main():
         for i, chunk in enumerate(chunks):
             if i == 0:
                 st.text_area(f'Chunk {i+1}', prompt + chunk, key=f'chunk_{i}')
-            else:
-        pass
+            else:        
                 st.text_area(f'Chunk {i+1}', chunk, key=f'chunk_{i}')
         
