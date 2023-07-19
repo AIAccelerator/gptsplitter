@@ -11,10 +11,10 @@ class PDFHandler(FileHandler):
         import PyPDF2
 
     def read(self, file):
-        reader = PyPDF2.PdfFileReader(file)
+        reader = PyPDF2.PdfReader(file)
         content = ""
-        for page in range(reader.getNumPages()):
-            content += reader.getPage(page).extractText()
+        for page in range(len(reader.pages)):
+            content += reader.pages[page].extract_text()
         return content
 
 class DocHandler(FileHandler):
@@ -34,10 +34,10 @@ class PDFHandler(FileHandler):
         import PyPDF2
 
     def read(self, file):
-        reader = PyPDF2.PdfFileReader(file)
+        reader = PyPDF2.PdfReader(file)
         content = ""
-        for page in range(reader.getNumPages()):
-            content += reader.getPage(page).extractText()
+        for page in range(len(reader.pages)):
+            content += reader.pages[page].extract_text()
         return content
 
 class DocHandler(FileHandler):
