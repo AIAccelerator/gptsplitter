@@ -14,7 +14,17 @@ prompt = st.text_area('Enter prompt', 'Act as a document/text loader until you l
 
 file_content = None
 if uploaded_file is not None:
-    file_content = uploaded_file.read().decode()
+    from file_handler import PDFHandler, DocHandler
+
+    if uploaded_file.type == 'application/pdf':
+        handler = PDFHandler()
+    elif uploaded_file.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+        handler = DocHandler()
+    else:
+        st.write("Unsupported file type")
+        return
+
+    file_content = handler.read(uploaded_file)
 elif st.button('Or paste your text', key='unique_key_2'):
     file_content = st.text_area('Paste your text here')
 
