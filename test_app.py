@@ -37,3 +37,11 @@ class TestApp(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+@patch('app.st')
+def test_text_upload_logic(self, mock_st):
+    with open('example.txt', 'rb') as f:
+        content = f.read()
+    mock_file = MockUploadedFile(content, 'text/plain')
+    mock_st.file_uploader.return_value = mock_file
+    app.main()
+    # TODO: Add assertions based on the expected behavior of app.main()

@@ -48,3 +48,6 @@ class DocHandler(FileHandler):
         doc = docx.Document(file)
         content = "\n".join([paragraph.text for paragraph in doc.paragraphs])
         return content
+class TextFileHandler:
+    def read(self, file):
+        return file.read()

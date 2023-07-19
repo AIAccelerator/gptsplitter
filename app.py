@@ -15,12 +15,14 @@ def main():
 
     file_content = None
     if uploaded_file is not None:
-        from file_handler import PDFHandler, DocHandler
+        from file_handler import PDFHandler, DocHandler, TextFileHandler
 
-        if uploaded_file.type == 'application/pdf':
-            handler = PDFHandler()
-        elif uploaded_file.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-            handler = DocHandler()
+    if uploaded_file.type == 'application/pdf':
+        handler = PDFHandler()
+    elif uploaded_file.type == 'application/docx':
+        handler = DocHandler()
+    elif uploaded_file.type == 'text/plain':
+        handler = TextFileHandler()
         else:
             st.write("Unsupported file type")
             handler = None
