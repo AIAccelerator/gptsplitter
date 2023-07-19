@@ -27,8 +27,9 @@ def main():
         elif mimetype == 'text/plain':
             handler = TextFileHandler()
         else:
-            st.write("Unsupported file type")
-            handler = None
+    else:
+        st.write(f"Unsupported file type: {mimetype}")
+        handler = None
     else:
         handler = None
 
