@@ -7,8 +7,9 @@ class TestApp(unittest.TestCase):
     def test_pdf_upload_logic(self, mock_st):
         mock_file = MagicMock(type='application/pdf')
         with open('example.pdf', 'rb') as f:
-            mock_file.read.return_value = f.read()
-            mock_file.tell.return_value = 0
+            content = f.read()
+        mock_file.read.side_effect = lambda: content
+        mock_file.tell.return_value = 0
         mock_st.file_uploader.return_value = mock_file
         app.main()
         # TODO: Add assertions based on the expected behavior of app.main()
@@ -17,8 +18,9 @@ class TestApp(unittest.TestCase):
     def test_doc_upload_logic(self, mock_st):
         mock_file = MagicMock(type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
         with open('example.docx', 'rb') as f:
-            mock_file.read.return_value = f.read()
-            mock_file.tell.return_value = 0
+            content = f.read()
+        mock_file.read.side_effect = lambda: content
+        mock_file.tell.return_value = 0
         mock_st.file_uploader.return_value = mock_file
         app.main()
         # TODO: Add assertions based on the expected behavior of app.main()
