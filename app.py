@@ -41,6 +41,8 @@ def main():
         file_content = st.text_area('Paste your text here')
 
     if file_content is not None:
+        if not isinstance(file_content, str):
+            file_content = str(file_content)
         chunks = split_text(file_content, chunk_size, prompt)
         for i, chunk in enumerate(chunks):
             if i == 0:
