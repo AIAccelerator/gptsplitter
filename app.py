@@ -32,6 +32,7 @@ def main():
 
     if handler is not None:
         file_content = handler.read(uploaded_file)
+        file_content = file_content.decode('utf-8') if isinstance(file_content, bytes) else file_content
     elif st.button('Or paste your text', key='unique_key_2'):
         file_content = st.text_area('Paste your text here')
 
