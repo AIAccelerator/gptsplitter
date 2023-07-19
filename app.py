@@ -22,4 +22,4 @@ if file_content is not None:
     chunks = split_text(file_content, chunk_size, prompt)
     for i, chunk in enumerate(chunks):
         st.text_area(f'Chunk {i+1}', chunk, key=f'chunk_{i}')
-        st.button('Copy text', key='copy_{i}')
+        
