@@ -1,12 +1,16 @@
 import streamlit as st
+from tokenizer import Tokenizer
+
+tokenizer = Tokenizer()
 
 def split_text(text, chunk_size):
-    return [text[i:i+chunk_size] for i in range(0, len(text), chunk_size)]
+    return tokenizer.split_into_chunks(text, chunk_size)
 
 st.title('ChatGPT Splitter')
 
-uploaded_file = st.file_uploader("Upload file", type=['txt', 'pdf', 'docx'])
+uploaded_file = st.file_uploader("Upload file", type=['txt', 'pdf', 'docx', 'doc', 'xml'])
 chunk_size = st.number_input('Enter chunk size', min_value=1, value=1000)
+prompt = st.text_input('Enter prompt')
 
 if uploaded_file is not None:
     file_content = uploaded_file.read().decode()
@@ -18,3 +22,4 @@ if file_content:
     for i, chunk in enumerate(chunks):
         st.write(f'Chunk {i+1}:')
         st.write(chunk)
+        st.button('Copy text')
