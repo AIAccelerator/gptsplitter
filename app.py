@@ -21,5 +21,8 @@ elif st.button('Or paste your text', key='unique_key_2'):
 if file_content is not None:
     chunks = split_text(file_content, chunk_size, prompt)
     for i, chunk in enumerate(chunks):
-        st.text_area(f'Chunk {i+1}', chunk, key=f'chunk_{i}')
+        if i == 0:
+            st.text_area(f'Chunk {i+1}', prompt + chunk, key=f'chunk_{i}')
+        else:
+            st.text_area(f'Chunk {i+1}', chunk, key=f'chunk_{i}')
         
