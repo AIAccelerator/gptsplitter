@@ -22,7 +22,7 @@ if uploaded_file is not None:
         handler = DocHandler()
     else:
         st.write("Unsupported file type")
-        return
+        handler = None
 
     file_content = handler.read(uploaded_file)
 elif st.button('Or paste your text', key='unique_key_2'):
