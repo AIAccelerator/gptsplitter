@@ -30,7 +30,7 @@ def main():
     else:
         st.write(f"Unsupported file type: {mimetype}")
         handler = None
-    if uploaded_file is None:
+    elif uploaded_file is None:
         handler = None
 
     if handler is not None:
