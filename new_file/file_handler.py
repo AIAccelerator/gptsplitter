@@ -12,6 +12,15 @@ class PDFHandler(FileHandler):
         for page in range(reader.getNumPages()):
             content += reader.getPage(page).extractText()
         return content
+
+class DocHandler(FileHandler):
+    def __init__(self):
+        import docx
+
+    def read(self, file):
+        doc = docx.Document(file)
+        content = "\n".join([paragraph.text for paragraph in doc.paragraphs])
+        return content
 class FileHandler:
     def read(self, file):
         raise NotImplementedError
@@ -25,4 +34,13 @@ class PDFHandler(FileHandler):
         content = ""
         for page in range(reader.getNumPages()):
             content += reader.getPage(page).extractText()
+        return content
+
+class DocHandler(FileHandler):
+    def __init__(self):
+        import docx
+
+    def read(self, file):
+        doc = docx.Document(file)
+        content = "\n".join([paragraph.text for paragraph in doc.paragraphs])
         return content
