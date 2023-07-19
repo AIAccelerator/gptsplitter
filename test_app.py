@@ -21,11 +21,11 @@ class TestApp(unittest.TestCase):
 
     @patch('app.st')
     def test_pdf_upload(self, mock_st):
-        self.test_pdf_upload_logic(mock_st)
+        self.test_pdf_upload_logic()
 
     @patch('app.st')
     def test_doc_upload(self, mock_st):
-        self.test_doc_upload_logic(mock_st)
+        self.test_doc_upload_logic()
 
 if __name__ == '__main__':
     unittest.main()
