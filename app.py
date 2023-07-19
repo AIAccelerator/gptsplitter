@@ -27,8 +27,8 @@ def main():
         st.write("Unsupported file type")
         handler = None
 
-        if handler is not None:
-            file_content = handler.read(uploaded_file)
+    if handler is not None:
+        file_content = handler.read(uploaded_file)
     elif st.button('Or paste your text', key='unique_key_2'):
         file_content = st.text_area('Paste your text here')
 
