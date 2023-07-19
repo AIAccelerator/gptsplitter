@@ -23,9 +23,9 @@ def main():
         handler = DocHandler()
     elif uploaded_file.type == 'text/plain':
         handler = TextFileHandler()
-        else:
-            st.write("Unsupported file type")
-            handler = None
+    else:
+        st.write("Unsupported file type")
+        handler = None
 
         if handler is not None:
             file_content = handler.read(uploaded_file)
