@@ -12,6 +12,7 @@ uploaded_file = st.file_uploader("Upload file", type=['txt', 'pdf', 'docx', 'doc
 chunk_size = st.number_input('Enter chunk size', min_value=1, value=1000)
 prompt = st.text_input('Enter prompt')
 
+file_content = None
 if uploaded_file is not None:
     file_content = uploaded_file.read().decode()
 elif st.button('Or paste your text'):
