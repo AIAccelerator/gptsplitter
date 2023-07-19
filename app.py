@@ -1,3 +1,4 @@
+import mimetypes
 import streamlit as st
 from tokenizer import Tokenizer
 
@@ -18,11 +19,12 @@ def main():
         from file_handler import PDFHandler, DocHandler, TextFileHandler
 
     if uploaded_file is not None:
-        if uploaded_file.type == 'application/pdf':
+        mimetype = mimetypes.guess_type(uploaded_file.name)[0]
+        if mimetype == 'application/pdf':
             handler = PDFHandler()
-        elif uploaded_file.type == 'application/docx':
+        elif mimetype == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
             handler = DocHandler()
-        elif uploaded_file.type == 'text/plain':
+        elif mimetype == 'text/plain':
             handler = TextFileHandler()
         else:
             st.write("Unsupported file type")
