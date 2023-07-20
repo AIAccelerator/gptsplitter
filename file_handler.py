@@ -1,6 +1,7 @@
 
 import PyPDF2
 import docx
+import pandas as pd
 
 class FileHandler:
     def read(self, file):
@@ -28,3 +29,11 @@ class DocHandler(FileHandler):
 class TextFileHandler:
     def read(self, file):
         return file.read()
+
+class XlsHandler(FileHandler):
+    def __init__(self):
+        import pandas as pd
+
+    def read(self, file):
+        df = pd.read_excel(file)
+        return df.to_string()

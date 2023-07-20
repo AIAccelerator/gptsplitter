@@ -17,7 +17,7 @@ def main():
 
     file_content = None
     if uploaded_file is not None:
-        from file_handler import PDFHandler, DocHandler, TextFileHandler
+        from file_handler import PDFHandler, DocHandler, TextFileHandler, XlsHandler
 
         if uploaded_file is not None and hasattr(uploaded_file, 'name'):
             mimetype = mimetypes.guess_type(uploaded_file.name)[0]
@@ -27,6 +27,8 @@ def main():
                 handler = PDFHandler()
             elif mimetype in ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword']:
                 handler = DocHandler()
+            elif mimetype in ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']:
+                handler = XlsHandler()
             elif mimetype == 'text/plain':
                 handler = TextFileHandler()
             else:
